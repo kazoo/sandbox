@@ -1,0 +1,20 @@
+<h1>Library#list</h1>
+<p>Find me in app/views/library/list.html.erb</p>
+
+<table border="1">
+<tr>
+  <th>ISBN</th><th>title</th><th>price</th>
+  <th>created_at</th>
+
+<% @books.each {|book| %>
+<tr>
+  <td><%= book.isbn %></td>
+  <td><%= book.title %></td>
+  <td><%= book.price %></td>
+  <td><%= book.created_at %></td>
+</tr>
+<% } %>
+
+</table>
+
+

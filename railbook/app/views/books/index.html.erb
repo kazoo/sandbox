@@ -1,0 +1,46 @@
+<h1>Listing books</h1>
+
+<table>
+  <tr>
+    <th>Isbn</th>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Publish</th>
+    <th>Publishd</th>
+    <th>Cd</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @books.each do |book| %>
+  <tr>
+    <td><%= book.isbn %></td>
+    <td><%= book.title %></td>
+    <td><%= book.price %></td>
+    <td><%= book.publish %></td>
+    <td><%= book.publishd %></td>
+    <td><%= book.cd %></td>
+
+    <% # book は each メソッドで配列から取り出された Book オブジェクト %>
+    <% # ここで Rails はオブジェクトを一意に特定する book.id フィールドを取得しようとする %>
+    <% # 通常 id には 1,2,3...という連番が入っているので、 /books/1,2,3...というリンクが生成される %>
+    <td><%= link_to 'Show', book %></td>
+
+    <% # routes.rb で、resource メソッドを呼び出した時に edit_book_path, new_book_path のビューヘルパーが用意される %>
+    <% # パスは、/books/new  /books/:id/edit  のようになる %>
+    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+
+    <% # link_to メソッドは実行前に確認ダイアログを表示することもできる %>
+    <% # また、method: オプションは、HTTP GET以外でのリクエストを生成する %>
+    <td><%= link_to 'Destroy', book, confirm: 'Are you sure?', method: :delete %></td>
+
+    <% # data- で始まる属性は、HTML5 で導入され独自のデータをあらわす %>
+    <% # data- では、多くの場合 JavaScript が処理を行っているが、ソース中からは切り離されている(Unobtrusive JS) %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Book', new_book_path %>
