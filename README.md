@@ -1,4 +1,4 @@
 sandbox
 =======
 
-private test repo 2
+private test repo
